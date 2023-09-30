@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+      - run: |
+          rm -rf node_modules package-lock.json
       - run: npm ci
 
   publish-gpr:
@@ -29,6 +31,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: yarn ci
+      - run: npm ci
       - run: npm run build --if-present
         
